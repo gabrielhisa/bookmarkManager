@@ -32,8 +32,12 @@ public class BookmarkService {
     }
 
     public Bookmark updateBookmark(Long id, Bookmark bookmark){
-        bookmark.setId(id);
-        return bookmarkRepo.save(bookmark);
+        Bookmark currentBookmark = bookmarkRepo.findById(id).orElseThrow(() -> new RuntimeException("Bookmark not found"));
+        currentBookmark.setTitle(bookmark.getTitle());
+        currentBookmark.setUrl(bookmark.getUrl());
+        currentBookmark.setCategory(bookmark.getCategory());
+
+        return bookmarkRepo.save(currentBookmark);
     }
 
     public void deleteBookmark(Long id){

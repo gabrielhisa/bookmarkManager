@@ -21,7 +21,7 @@ public class BookmarkController {
     }
 
     @GetMapping("/{category}") // Get with category filter
-    public List<Bookmark> getByCategory(String category){
+    public List<Bookmark> getByCategory(@PathVariable String category){
         return service.getByCategory(category);
     }
 

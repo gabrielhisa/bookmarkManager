@@ -3,7 +3,7 @@ CREATE TABLE bookmark(
     title VARCHAR(50) NOT NULL,
     url TEXT NOT NULL,
     category VARCHAR(50) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    timeStamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO bookmark (title, url, category) VALUES

@@ -1,8 +1,6 @@
 package com.exercising.bookmarks.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -12,12 +10,17 @@ public class Bookmark {
     // Not using @Column annotation here as the database names are the same
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String url;
     private String category;
+    @Column(name = "timestamp")
     private Date timeStamp;
 
+    public Bookmark(){
+
+    }
     public Bookmark(Long id, String title, String url, String category, Date timeStamp) {
         this.id = id;
         this.title = title;
