@@ -12,7 +12,6 @@ public class Bookmark {
     // Not using @Column annotation here as the database names are the same
 
     @Id
-
     private Long id;
     private String title;
     private String url;
