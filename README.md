@@ -7,9 +7,11 @@ A simple backend project to exercise the concepts of REST aplications, understan
 As this is a simple project solely for the purpose of exercising and getting a visual panorama of the entire architecture, I planned to keep it simple. The base project was downloaded from https://start.spring.io/. Techs used:
  - Architecture: REST API
  - Java 21 + Maven
- - Springboot 3.5.6 (Spring Web, Spring Data JPA, Spring DevTools)
+ - Springboot 3.5.6 (Spring Web, Spring Data JPA, Spring DevTools, WebMvcTest)
  - PostgreSQL + DBeaver
  - Postman
+ - JUnit
+ - Mockito
 
 ## API Endpoints
  - GET "/bookmarks" - Get all bookmarks
@@ -59,6 +61,25 @@ Springboot will understand the structure 'findBy + PropertyName + Operator' and 
 3. By using the @RestController annotation instead of only @Controller annotation in the Controller package, Springboot will add @ResponseBody to all the methods. This annotation will tell Spring to convert objects to JSON.
 
 4. Had an error when trying to Post a JSON, this happened because I did not use the @GeneratedValue in the ID variable in the Entity class, unabling the auto creation of an ID for a new DB registry. Annotation added and lesson learned.
+
+5. Decided to try and add unit testing to the program. Used JUnit and Mockito for the service class, testing some methods and exercising the whole procedure and structure of the test itself. Then tried testing an HTTP response with WebMvcTest.
+All tests ran worked as expected.
+```
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.830 s -- in com.exercising.bookmarks.controller.BookmarkControllerTest
+[INFO] Running com.exercising.bookmarks.service.BookmarkServiceTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.188 s -- in com.exercising.bookmarks.service.BookmarkServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.267 s
+[INFO] Finished at: 2025-12-19T11:14:51-03:00
+[INFO] ------------------------------------------------------------------------
+```
 
 ## How to Run
 1. Clone the repository
